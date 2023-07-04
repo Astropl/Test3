@@ -10,15 +10,42 @@
         tools:ignore="WrongManifestParent" />
 
     <application
-        android:requestLegacyExternalStorage="true" tools:targetApi="q"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Test3">
+        android:theme="@style/Theme.Test3"
+        tools:targetApi="q">
+        <activity
+            android:name=".OperDate"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
+        <receiver
+            android:name=".Widget1"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget1_info" />
+        </receiver>
+
+        <activity
+            android:name=".Widget1ConfigureActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".OperFiles"
             android:exported="false">

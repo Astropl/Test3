@@ -1,19 +1,83 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Widget.Test3.AppWidget.Container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/material_dynamic_primary90"
+    android:contentDescription="@string/myWidgetDescription"
+    android:maxResizeWidth="120dp"
+    android:maxResizeHeight="80dp"
+    android:minWidth="80dp"
+    android:minHeight="40dp"
+    android:minResizeWidth="40dp"
+    android:minResizeHeight="40dp"
+    android:updatePeriodMillis="30"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="2"
+    android:targetCellHeight="1"
     android:theme="@style/Theme.Test3.AppWidgetContainer">
 
-    <TextView
-        android:id="@+id/appwidget_text"
-        style="@style/Widget.Test3.AppWidget.InnerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
-</RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/widgetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/widgetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#4CAF50"
+            android:gravity="center"
+            android:text="@string/widgetBtn"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/widgettxt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="5dp"
+
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:text="@string/widgettxt1"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/widgettxt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:text="@string/widgettxt2"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/widgettxt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:text="@string/widgettxt3"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/widgettxt4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:text="@string/widgettxt4"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>

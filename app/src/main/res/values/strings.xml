@@ -1,4 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="main_btn">Zamknij</string>
+
     <string name="app_name">Test3</string>
     <string name="naglowek">Naglowek</string>
 
@@ -31,7 +34,16 @@
     <string name="statystyki_btn_kasa">KASA</string>
     <string name="statystyki_txt_spaloneInfo">ILE SPALIŁEM</string>
     <string name="statystyki_txt_spalone1">Dzisiaj: </string>
+    <string name="statystyki_ButtonTemp">TEMP </string>
 
+    <string name="statystyki_txt_dzisiajInfo">DZISIAJ: </string>
+    <string name="statystyki_txt_dzisiajInfo1">0</string>
+    <string name="statystyki_txt_tydzienInfo">W TYGODNIU </string>
+    <string name="statystyki_txt_tydzienInfo1">0 </string>
+    <string name="statystyki_txt_miesiacInfo">W MIESIĄCU </string>
+    <string name="statystyki_txt_miesiacInfo1">0 </string>
+    <string name="statystyki_txt_wszystkieInfo">WSZYSTKIE </string>
+    <string name="statystyki_txt_wszystkieInfo1">0 </string>
 
 
     //Stringi do Ustawienia
@@ -44,10 +56,6 @@
     <string name="ustawienia_btn_save">ZAPIS</string>
 
 
-
-
-
-
     <string name="ustawienia_text1">Cena za paczkę</string>
     <string name="ustawienia_text2">Ilość sztuk w paczce</string>
     <string name="ustawienia_btnBack">Wstecz</string>
@@ -57,5 +65,20 @@
     <string name="ustawienia_IloscSztuk">20</string>
     <string name="ustawienia_CenaZaPaczke">15,00</string>
     <string name="textview">TextView</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+
+    //Widget
+
+
+    <string name="widgettxt1">DZISIAJ SPALONE: </string>
+    <string name="widgettxt3">NIE PALIŁEM JUŻ: </string>
+    <string name="widgettxt4">0000:00:00</string>
+    <string name="widgettxt2">00</string>
+    <string name="widgetBtn">ZAPAL</string>
+    <string name="myWidgetDescription">Podpis na widgetcie</string>
+
 
 </resources>

@@ -10,7 +10,7 @@ var filenameFirst = "firstSetup.txt"
 var outputFile1 = File(wp, filenameFirst)
 
 
-var listaZczytana = mutableListOf<String>()
+//var listaZczytana = mutableListOf<String>()
 var listaSpalonych = mutableListOf<String>()
 var dodoajDoListyLogiPliki = mutableListOf<String>()
 
@@ -22,7 +22,7 @@ var wp1 = File("/data/data/com.example.test3/files/daty")
 var wpFileName = File("/data/data/com.example.test3/files/as1.txt")
 var wpFileName2 = File("/data/data/com.example.test3/files/daty/asy1.txt")
 var filename = "as1.txt"
-
+var godzIMinute = ""
 
 class OperFiles : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +34,11 @@ class OperFiles : AppCompatActivity() {
     }
 
     fun createFileDate(localDateNow: String) {
-
-        var plikDzienny = (localDateNow.toString() + ".txt")
+        loguj("createFileDate: start")
+        val plikDzienny = (localDateNow + ".txt")
         //val outputFile2 = File(wp1, fileNameDate)
-        var outputFile2 = File(wp1, plikDzienny)
-        //loguj("createFileDate: start")
+        val outputFile2 = File(wp1, plikDzienny)
+
         try {
             if (!wp1.exists()) {
                 wp1.mkdir()
@@ -53,7 +53,7 @@ class OperFiles : AppCompatActivity() {
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
         }
-        // loguj("createFileDate: end")
+         loguj("createFileDate: end")
     }
 
     fun stworzPierwszyPlik() {
@@ -91,14 +91,14 @@ class OperFiles : AppCompatActivity() {
     fun dodajDoListySpalone(spalone: String) {
         //listaZczytana.add(0, spalone)
         listaZczytana.set(0, spalone)
-        loguj("Dodaj do Listy spoalone: ++ : $spalone")
+        //loguj("Dodaj do Listy spoalone: ++ : $spalone")
         zapiszNowaListe()
     }
 
     fun zsumujSpalone() {
         //listaspalonych
        // loguj("zsumujSpalone::odczyt")
-        var iloscWpisowWliscieDnia = 0
+
         listaSpalonych.clear()
         var a3 = 0
         var line3: String?
@@ -119,7 +119,7 @@ class OperFiles : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        iloscWpisowWliscieDnia = listaSpalonych.size
+        var iloscWpisowWliscieDnia = listaSpalonych.size
         //loguj("odczytajPierwszyPlik: rozmiar listy spalonych : $iloscWpisowWliscieDnia")
         for (listaSpalonychs in listaSpalonych) {
             loguj(listaSpalonychs)
@@ -132,7 +132,7 @@ class OperFiles : AppCompatActivity() {
         //odczytac z inch wszytskie na pozycji 1
         //dodoac do siebie
         //wp1 - katalog z data
-        loguj("dodajZListyPlikow: Start")
+        //loguj("dodajZListyPlikow: Start")
         listaZczytana.clear()
         var b = 0
         var a = 0
@@ -140,45 +140,35 @@ class OperFiles : AppCompatActivity() {
        // loguj("dodajZListyPlikow: 1")
         for (listaSpalonychs in listaSpalonych) {
            // loguj("dodajZListyPlikow: 2")
-            var listaSpalonychs1 = listaSpalonychs + ".txt"
+            val listaSpalonychs1 = listaSpalonychs + ".txt"
             //loguj("dodajZListyPlikow: 3")
-            var wp11 = File(wp1, listaSpalonychs1)//
+            val wp11 = File(wp1, listaSpalonychs1)//
             try {
-                loguj("dodajZListyPlikow: 4")
+                //loguj("dodajZListyPlikow: 4")
                 BufferedReader(FileReader(wp11)).use { br ->
                     while (br.readLine().also { line2 = it } != null) {
-                        loguj("dodajZListyPlikow: 5")
-                        //dodoajDoListy(line2.toString(), a)
 
-                        loguj("dodajZListyPlikow: 6")
-                        loguj("dodajZListyPlikow: Plik o nazwie : $listaSpalonychs1")
-//TODO: Problem ?????
+
                         try {
-                            var line3: Int = line2.toString().toInt()
-                            loguj("dodajZListyPlikow: 7")
-                            loguj("dodajZListyPlikow: pokaż line3: $line3")
+                            val line3: Int = line2.toString().toInt()
 
-                            loguj("dodajZListyPlikow: 8")
-
-                            loguj("dodajZListyPlikow: a----- to: $a")
                             if (a == 0) {
-                                loguj("dodajZListyPlikow: Suma wszytskich spaloncyh to: $b")
+
                                 b = (b + (line3))
-                                loguj("dodajZListyPlikow: Dodoałem B do b to: $b")
+
                                 a++
                             }else if (a >= 3){
                                 a = 0
-                                loguj("dodajZListyPlikow: Zeruję a")
-                                //break
+
                             } else {
-                                loguj("dodajZListyPlikow: a  =  $a moze byc 1,2. Dodoaje a+a")
+
                                 a++
-                                //break
+
                             }
 
 
                         } catch (nfe: NumberFormatException) {
-                            loguj("dodajZListyPlikow: ${line2.toString()} Nie zparsowane: ")
+                            //loguj("dodajZListyPlikow: ${line2.toString()} Nie zparsowane: ")
                             a++
                             if(a>=3)
                             {
@@ -212,34 +202,43 @@ class OperFiles : AppCompatActivity() {
     }
 
     fun porownajDatyNaPoczatek(localDateNow: String) {
+        loguj("porownajDatyNaPoczatek: start")
+        loguj("porownajDatyNaPoczatek: listaZczytana[3] dlugosc ${listaZczytana.size}")
+        loguj("porownajDatyNaPoczatek: listaZczytana[3] ${listaZczytana.elementAt(0)}")
+        var a =0
+        for (listaZczytanas in listaZczytana) {
+            loguj ("Listz z indexem : $a zawiera ${listaZczytana.elementAt(a)}")
+        }
+        val wczorajsza = listaZczytana[3]
 
-        var wczorajsza = listaZczytana[3]
-
-        //loguj("porownajDatyNaPoczatek: Data dzisiaj to: $localDateNow\n")
-        //loguj("porownajDatyNaPoczatek: Data zczytana to: $wczorajsza")
+        loguj("porownajDatyNaPoczatek: Data dzisiaj to: $localDateNow\n")
+        loguj("porownajDatyNaPoczatek: Data zczytana to: $wczorajsza")
         // porównac date z dzisiaj lokalna i ostania zapisaną.
         if (localDateNow != wczorajsza) {
-            // loguj("Rózni się. wykasuj licznik fajek na dziś")
+             loguj("Rózni się. wykasuj licznik fajek na dziś")
             listaZczytana.set(0, "0")
         } else {
-            //loguj(" Nie rózni się. nic nie rób")
+            loguj(" Nie rózni się. nic nie rób")
         }
     }
 
     fun zapiszNowaListe() {
         //loguj("dodajOdczytane::dodoaje odczytaną listę i zapisuje")
 
-        var plikDzienny = (localDateNow.toString() + ".txt")
+        val plikDzienny = (localDateNow.toString() + ".txt")
 
-        var outputFile2 = File(wp1, plikDzienny)
+        val outputFile2 = File(wp1, plikDzienny)
 
-        (wpFileName).writeText("");
+        (wpFileName).writeText("")
         (outputFile2).writeText("")
 
         for (listaZczytanas in listaZczytana) {
             //println("$listaZczytanas - Number of characters: ${listaZczytanas.length}")
             (wpFileName).appendText(listaZczytanas)
+            //pobierz godzine
+            operDate.pobierzGodzineIminuty(godzIMinute)
             (wpFileName).appendText("\n")
+//pobierz godzine
 
             (outputFile2).appendText(listaZczytanas)
 
@@ -253,9 +252,10 @@ class OperFiles : AppCompatActivity() {
     }
 
     fun zmianaXnaY() {
+        loguj("zmianaXnaY: start")
         wpFileName1.writeText("")
         wpFileName1.writeText("y")
-        // loguj("zmianaXnaY: zmienione na y")
+         loguj("zmianaXnaY: zmienione na y")
     }
 
     fun dodoajDoListy(element: String, a: Int) {
@@ -307,7 +307,7 @@ class OperFiles : AppCompatActivity() {
         }
 
         //loguj("odczytajPierwszyPlik: $pierwszaZmienna1")
-        return pierwszaZmienna1.toString()
+        return pierwszaZmienna1
     }
 
     fun dopiszCosNaStart() {
@@ -340,7 +340,7 @@ class OperFiles : AppCompatActivity() {
         }
 
         //loguj("stworzKatalog::katalog stworzony w " + outputFile.toString())
-
+//TODO $dates$ dgfdsgsf
     }
 
     fun zsumujWszystkieSpalone() {
